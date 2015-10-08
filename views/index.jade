@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  .container
+    form.calculator(method = "POST")
+      input(name="num1" type= "number" placeholder="First Number")
+      input(name="num2" type="number" placeholder="Second Number")
+      button(type = "submit") SUBMIT
+    .buttonContainer
+      button(class= "operator addition") +
+      button(class= "operator subtract") -
+      button(class= "operator multiply") X
+      button(class= "operator divide") &divide;
+    .answer
+
+
