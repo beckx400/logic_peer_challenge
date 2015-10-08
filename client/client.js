@@ -1,20 +1,18 @@
 $(function(){
     var buttonClicked = "";
 
-    $(".operator").on("click", function(event){
+    $(".operator").on("click", function(){
         buttonClicked = $(this).attr("class");
-        console.log(buttonClicked);
 
         $(".calculator").submit(function(event){
             event.preventDefault();
             var formData = $(".calculator").serialize();
-            console.log(formData);
+
             switch(buttonClicked){
                 case "operator addition":
                     addData(formData);
                     getAnswer();
                     buttonClicked = "";
-                    console.log("ADDDED");
                     break;
                 case "operator subtract":
                     subtractData(formData);
@@ -51,7 +49,7 @@ $(function(){
             type: "POST",
             url: "operation/subtract",
             data: formData
-        }).done(function(response){
+        }).done(function(){
             console.log("Subtracted");
             getAnswer();
         });
@@ -61,7 +59,7 @@ $(function(){
             type: "POST",
             url: "operation/multiply",
             data: formData
-        }).done(function(response){
+        }).done(function(){
             console.log("Multiplied");
             getAnswer();
         });
@@ -71,7 +69,7 @@ $(function(){
             type: "POST",
             url: "operation/divide",
             data: formData
-        }).done(function(response){
+        }).done(function(){
             console.log("Divided");
             getAnswer();
         });
@@ -79,7 +77,7 @@ $(function(){
 
 
     function getAnswer(){
-        console.log("ran");
+
         $.ajax({
             url: 'operation/answer'
         }).done(function(response){
